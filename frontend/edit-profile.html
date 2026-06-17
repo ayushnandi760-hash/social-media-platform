@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Edit your MiniConnect profile - Update your personal information">
+    <title>Edit Profile | MiniConnect</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-content">
+            <a href="profile.html" class="navbar-brand">
+                <span class="brand-icon">✦</span>
+                MiniConnect
+            </a>
+            <div class="navbar-actions">
+                <div class="navbar-user" id="nav-user" onclick="window.location.href='profile.html'">
+                    <img id="nav-avatar" src="" alt="Your avatar">
+                    <span id="nav-username">User</span>
+                </div>
+                <button class="btn btn-sm btn-danger" id="logout-btn" onclick="logout()">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Edit Profile Page -->
+    <main class="edit-profile-page">
+        <div class="container">
+            <div class="edit-profile-container">
+                <!-- Loading State -->
+                <div class="page-loader" id="page-loader">
+                    <div class="loader"></div>
+                </div>
+
+                <!-- Edit Form (hidden until loaded) -->
+                <div id="edit-content" style="display: none;">
+                    <!-- Page Header -->
+                    <div class="page-header">
+                        <h1>✏️ Edit Profile</h1>
+                        <p>Update your personal information and bio</p>
+                    </div>
+
+                    <!-- Avatar Section -->
+                    <div class="edit-avatar-section">
+                        <img id="edit-avatar" src="" alt="Your profile picture">
+                        <div class="edit-avatar-info">
+                            <h3>Profile Picture</h3>
+                            <p>JPG, PNG, GIF, or WebP. Max 5MB.</p>
+                            <label class="btn btn-secondary btn-sm" style="cursor: pointer;">
+                                📷 Change Photo
+                                <input
+                                    type="file"
+                                    id="edit-avatar-input"
+                                    accept="image/jpeg,image/png,image/gif,image/webp"
+                                    style="display: none;"
+                                >
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Upload Progress -->
+                    <div class="upload-progress" id="upload-progress">
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" id="progress-bar-fill"></div>
+                        </div>
+                        <p class="upload-status" id="upload-status">Uploading...</p>
+                    </div>
+
+                    <!-- Alert message area -->
+                    <div id="alert-container"></div>
+
+                    <!-- Edit Form -->
+                    <form id="edit-profile-form" novalidate>
+                        <div class="card">
+                            <!-- Name Field -->
+                            <div class="form-group">
+                                <label for="edit-name">Full Name</label>
+                                <div class="input-wrapper">
+                                    <input
+                                        type="text"
+                                        id="edit-name"
+                                        class="form-input"
+                                        placeholder="Your full name"
+                                        required
+                                    >
+                                    <span class="input-icon">👤</span>
+                                </div>
+                            </div>
+
+                            <!-- Email Field -->
+                            <div class="form-group">
+                                <label for="edit-email">Email Address</label>
+                                <div class="input-wrapper">
+                                    <input
+                                        type="email"
+                                        id="edit-email"
+                                        class="form-input"
+                                        placeholder="Your email address"
+                                        required
+                                    >
+                                    <span class="input-icon">✉</span>
+                                </div>
+                            </div>
+
+                            <!-- Bio Field -->
+                            <div class="form-group">
+                                <label for="edit-bio">Bio</label>
+                                <textarea
+                                    id="edit-bio"
+                                    class="form-input no-icon"
+                                    placeholder="Tell the world about yourself... What are your interests, hobbies, or passions?"
+                                    rows="4"
+                                    maxlength="500"
+                                ></textarea>
+                                <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 6px; text-align: right;">
+                                    <span id="bio-char-count">0</span>/500 characters
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="form-actions">
+                            <a href="profile.html" class="btn btn-secondary">Cancel</a>
+                            <button type="submit" id="save-btn" class="btn btn-primary">
+                                <span id="save-btn-text">💾 Save Changes</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="js/edit-profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your MiniConnect profile - View and manage your social presence">
+    <title>Profile | MiniConnect</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-content">
+            <a href="feed.html" class="navbar-brand">
+                <span class="brand-icon">✦</span>
+                MiniConnect
+            </a>
+
+            <!-- Navigation Links -->
+            <div class="navbar-nav">
+                <a href="feed.html" class="nav-link" id="nav-feed-link">
+                    <span>🏠</span> Feed
+                </a>
+                <a href="profile.html" class="nav-link active" id="nav-profile-link">
+                    <span>👤</span> Profile
+                </a>
+            </div>
+
+            <div class="navbar-actions">
+                <div class="navbar-user" id="nav-user" onclick="window.location.href='profile.html'">
+                    <img id="nav-avatar" src="" alt="Your avatar">
+                    <span id="nav-username">User</span>
+                </div>
+                <button class="btn btn-sm btn-danger" id="logout-btn" onclick="logout()">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Page -->
+    <main class="profile-page">
+        <div class="container">
+            <!-- Loading State -->
+            <div class="page-loader" id="page-loader">
+                <div class="loader"></div>
+            </div>
+
+            <!-- Profile Content (hidden until loaded) -->
+            <div id="profile-content" style="display: none;">
+                <!-- Profile Header with Cover -->
+                <div class="profile-header">
+                    <div class="profile-cover">
+                        <div class="pattern"></div>
+                    </div>
+
+                    <div class="profile-info">
+                        <!-- Avatar with Upload Button -->
+                        <div class="profile-avatar-wrapper">
+                            <img
+                                id="profile-avatar"
+                                class="profile-avatar"
+                                src=""
+                                alt="Profile picture"
+                            >
+                            <label class="avatar-upload-btn" title="Change profile picture">
+                                📷
+                                <input
+                                    type="file"
+                                    id="avatar-upload-input"
+                                    accept="image/jpeg,image/png,image/gif,image/webp"
+                                >
+                            </label>
+                        </div>
+
+                        <!-- User Details -->
+                        <div class="profile-details">
+                            <h1 class="profile-name" id="profile-name">Loading...</h1>
+                            <p class="profile-email" id="profile-email">
+                                <span>✉</span>
+                                <span>loading@email.com</span>
+                            </p>
+                            <p class="profile-joined" id="profile-joined">
+                                <span>📅</span>
+                                <span>Member since ...</span>
+                            </p>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="profile-actions" id="profile-actions">
+                            <a href="edit-profile.html" class="btn btn-secondary btn-sm" id="edit-profile-btn">
+                                ✏️ Edit Profile
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upload Progress -->
+                <div class="upload-progress" id="upload-progress">
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" id="progress-bar-fill"></div>
+                    </div>
+                    <p class="upload-status" id="upload-status">Uploading...</p>
+                </div>
+
+                <!-- Profile Content Grid -->
+                <div class="profile-content">
+                    <!-- Left Column: About -->
+                    <div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">
+                                    <span class="icon">ℹ️</span>
+                                    About
+                                </h2>
+                            </div>
+                            <div id="bio-section">
+                                <p class="bio-text" id="profile-bio"></p>
+                                <p class="bio-empty" id="bio-empty" style="display: none;">
+                                    No bio yet. Tell the world about yourself! ✨
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Quick Stats -->
+                        <div class="card" style="margin-top: 24px;">
+                            <div class="card-header">
+                                <h2 class="card-title">
+                                    <span class="icon">📊</span>
+                                    Quick Stats
+                                </h2>
+                            </div>
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-value" id="stat-posts">0</div>
+                                    <div class="stat-label">Posts</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value" id="stat-followers">0</div>
+                                    <div class="stat-label">Followers</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value" id="stat-following">0</div>
+                                    <div class="stat-label">Following</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Activity -->
+                    <div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">
+                                    <span class="icon">⚡</span>
+                                    Recent Activity
+                                </h2>
+                            </div>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-dot">🎉</div>
+                                    <div class="timeline-content">
+                                        <h4>Joined MiniConnect</h4>
+                                        <p id="activity-joined">Welcome to the community!</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-dot">🚀</div>
+                                    <div class="timeline-content">
+                                        <h4>Phase 2 Coming Soon</h4>
+                                        <p>Posts, comments, and more features are on the way!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="js/profile.js"></script>
+</body>
+</html>

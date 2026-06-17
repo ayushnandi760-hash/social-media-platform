@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MiniConnect Feed - See what's happening in your community. Share posts, images, and connect with others.">
+    <title>Feed | MiniConnect</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-content">
+            <a href="feed.html" class="navbar-brand">
+                <span class="brand-icon">✦</span>
+                MiniConnect
+            </a>
+
+            <!-- Navigation Links -->
+            <div class="navbar-nav">
+                <a href="feed.html" class="nav-link active" id="nav-feed-link">
+                    <span>🏠</span> Feed
+                </a>
+                <a href="profile.html" class="nav-link" id="nav-profile-link">
+                    <span>👤</span> Profile
+                </a>
+            </div>
+
+            <div class="navbar-actions">
+                <div class="navbar-user" id="nav-user" onclick="window.location.href='profile.html'">
+                    <img id="nav-avatar" src="" alt="Your avatar">
+                    <span id="nav-username">User</span>
+                </div>
+                <button class="btn btn-sm btn-danger" id="logout-btn" onclick="logout()">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Feed Page -->
+    <main class="feed-page">
+        <div class="container">
+            <div class="feed-layout">
+
+                <!-- Page Header -->
+                <div class="feed-header">
+                    <h1>🏠 Your Feed</h1>
+                    <p>See what's happening in your community</p>
+                </div>
+
+                <!-- Create Post Card -->
+                <div class="create-post-card" id="create-post-card">
+                    <div class="create-post-top">
+                        <img id="create-post-avatar" class="create-post-avatar" src="" alt="Your avatar">
+                        <div class="create-post-form">
+                            <textarea
+                                id="post-content-input"
+                                class="create-post-textarea"
+                                placeholder="What's on your mind? Share something with the community..."
+                                maxlength="5000"
+                            ></textarea>
+                            <div class="char-count" id="char-count">0 / 5000</div>
+
+                            <!-- Image Preview -->
+                            <div class="image-preview-container" id="image-preview-container">
+                                <img id="image-preview" class="image-preview" src="" alt="Preview">
+                                <button class="image-preview-remove" id="image-preview-remove" title="Remove image">✕</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actions Bar -->
+                    <div class="create-post-actions">
+                        <div class="create-post-attachments">
+                            <label class="attachment-btn" id="attach-image-btn">
+                                <span class="emoji">🖼️</span>
+                                Photo
+                                <input
+                                    type="file"
+                                    id="post-image-input"
+                                    accept="image/jpeg,image/png,image/gif,image/webp"
+                                >
+                            </label>
+                        </div>
+                        <button class="post-submit-btn" id="post-submit-btn" onclick="createPost()">
+                            <span id="post-btn-text">✨ Post</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Loading State -->
+                <div class="page-loader" id="feed-loader">
+                    <div class="loader"></div>
+                </div>
+
+                <!-- Feed Posts Container -->
+                <div class="feed-posts" id="feed-posts" style="display: none;">
+                    <!-- Posts will be injected here by JavaScript -->
+                </div>
+
+                <!-- Empty Feed State -->
+                <div class="empty-feed" id="empty-feed" style="display: none;">
+                    <span class="empty-feed-icon">📝</span>
+                    <h3>No posts yet!</h3>
+                    <p>Be the first to share something with the community. Write your thoughts above!</p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="js/feed.js"></script>
+</body>
+</html>
