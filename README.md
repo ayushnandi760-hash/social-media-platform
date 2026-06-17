@@ -213,11 +213,7 @@ users ──< posts ──< likes
 
 ---
 
-## 📸 Screenshots
 
-> _Add screenshots of your app here_
-
----
 
 ## 🤝 Contributing
 
