@@ -1,8 +1,0 @@
-- [x] Database Updates: Update `schema.sql` with `followers` table.
-- [x] Backend Controllers: Create `userController.js` and update `profileController.js`.
-- [x] Backend Routes: Create `userRoutes.js` and register in `server.js`.
-- [x] Frontend HTML: Update `profile.html` Quick Stats and action buttons.
-- [x] Frontend CSS: Update `style.css` with Follow/Unfollow button styles.
-- [x] Frontend JS: Update `profile.js` for other profiles and follow logic.
-- [x] Frontend JS: Update `feed.js` to make profile links clickable.
-- [x] Documentation: Update `WALKTHROUGH.md` with Phase 4 concepts.
